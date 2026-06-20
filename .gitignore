@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Compiled C++ binaries
+main
+main.exe
+
+# Generated student output
+student_output/
+
+# Python
+__pycache__/
