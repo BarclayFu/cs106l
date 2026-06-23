@@ -1,0 +1,8 @@
+Make a Class
+------------
+
+Q1. What's const-correctness and why is it important?
+A1. Const-correctness is the practice of using the const keyword to declare which objects and member functions should not be modified. It is important because it allows the compiler to catch accidental modifications at compile time, makes code more readable by clearly expressing intent, and enables certain compiler optimizations.
+
+Q2. Is your class const-correct? How do you know?
+A2. Yes, my class is const-correct. Both getter functions (getName and getAge) and the private helper function (isValidAge) are marked const because they do not modify any member fields. This ensures the class can be used correctly with const objects and references.
