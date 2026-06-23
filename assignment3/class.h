@@ -1,19 +1,24 @@
+#pragma once
+
 #include <string>
 
+template <typename T>
 class Student {
 public:
     Student();
 
-    Student (const std::string& name, int age);
+    Student (const std::string& name, T age);
 
-    void setAge(int age);
+    void setAge(T age);
     void setName(const std::string& name);
 
     std::string getName() const;
-    int getAge() const;
+    T getAge() const;
 
 private:
     std::string name;
-    int age;
-    bool isValidAge(int age) const;
+    T age;
+    bool isValidAge(T age) const;
 };
+
+#include "class.cpp"

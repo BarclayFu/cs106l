@@ -5,5 +5,5 @@
 #include "class.h"
 void sandbox() {
   // STUDENT TODO: Construct an instance of your class!
-  Student s("John Doe", 20);
+  Student<int> s("John Doe", 20);
 }

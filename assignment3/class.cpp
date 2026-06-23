@@ -1,33 +1,41 @@
 #include <string>
 #include "class.h"
-Student::Student(){
+
+template <typename T>
+Student<T>::Student(){
     name = "Unknown";
-    age = 0;
+    age = T{};
 }
 
-Student::Student(const std::string& name, int age){
+template <typename T>
+Student<T>::Student(const std::string& name, T age){
     setName(name);
     setAge(age);
 }
 
-void Student::setAge(int age){
+template <typename T>
+void Student<T>::setAge(T age){
     if (isValidAge(age)) {
         this->age = age;
     }
 }
 
-void Student::setName(const std::string& name){
+template <typename T>
+void Student<T>::setName(const std::string& name){
     this->name = name;
 }
 
-std::string Student::getName() const{
+template <typename T>
+std::string Student<T>::getName() const{
     return name;
 }
 
-int Student::getAge() const{
+template <typename T>
+T Student<T>::getAge() const{
     return age;
 }
 
-bool Student::isValidAge(int age) const {
-    return age >= 0 && age <= 150;
+template <typename T>
+bool Student<T>::isValidAge(T age) const {
+    return age >= T{} && age <= T{150};
 }
