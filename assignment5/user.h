@@ -20,6 +20,12 @@ public:
    * Your custom operators and special member functions will go here!
    */
 
+  ~User();
+  User(const User& user);
+  User& operator=(const User& user);
+  User(User&& user) = delete;
+  User& operator=(User&& user) = delete;
+
   friend std::ostream& operator<<(std::ostream& os, const User& user);
 
 private:

@@ -64,6 +64,51 @@ void User::set_friend(size_t index, const std::string& name)
  * The definitions for your custom operators and special member functions will go here!
  */
 
+/**
+ * Destructor: frees the dynamically allocated friends array.
+ */
+User::~User() {
+  delete[] _friends;
+}
+
+/**
+ * Copy constructor: deep copies a User, allocating a new friends array.
+ */
+User::User(const User& user)
+  : _name(user._name)
+  , _friends(nullptr)
+  , _size(user._size)
+  , _capacity(user._capacity) {
+  if (user._capacity > 0) {
+    _friends = new std::string[user._capacity];
+    for (size_t i = 0; i < user._size; ++i) {
+      _friends[i] = user._friends[i];
+    }
+  }
+}
+
+/**
+ * Copy assignment operator: deep copies a User, freeing the old friends array.
+ * Guards against self-assignment.
+ */
+User& User::operator=(const User& user) {
+  if (this != &user) {
+    delete[] _friends;
+    _name = user._name;
+    _size = user._size;
+    _capacity = user._capacity;
+    if (user._capacity > 0) {
+      _friends = new std::string[user._capacity];
+      for (size_t i = 0; i < user._size; ++i) {
+        _friends[i] = user._friends[i];
+      }
+    } else {
+      _friends = nullptr;
+    }
+  }
+  return *this;
+}
+
 std::ostream& operator<<(std::ostream& os, const User& user) {
   os << "User(name=" << user._name << ", friends=[";
   for (size_t i = 0; i < user._size; ++i) {
