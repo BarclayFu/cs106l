@@ -109,6 +109,16 @@ User& User::operator=(const User& user) {
   return *this;
 }
 
+User& User::operator+=(User& rhs) {
+  this->add_friend(rhs.get_name());
+  rhs.add_friend(this->get_name());
+  return *this;
+}
+
+bool User::operator<(const User& rhs) const {
+  return this->_name < rhs._name;
+}
+
 std::ostream& operator<<(std::ostream& os, const User& user) {
   os << "User(name=" << user._name << ", friends=[";
   for (size_t i = 0; i < user._size; ++i) {
